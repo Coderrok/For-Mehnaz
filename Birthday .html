@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mehnaz! ✨</title>
+    <style>
+        :root {
+            --romantic-gold: #dfb15b;
+            --rose-gold: #e5989b;
+            --deep-magical: #1a0f1a;
+            --soft-glow: rgba(255, 183, 197, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        body {
+            /* Amazing Romantic Ambient Background: Deep twilight violet mixed with warm glow */
+            background: linear-gradient(135deg, #120716 0%, #2a1428 50%, #401f35 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #f7fafc;
+            position: relative;
+        }
+
+        /* Ambient Bokeh Glow Circles */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: var(--soft-glow);
+            filter: blur(80px);
+            z-index: -2;
+            pointer-events: none;
+        }
+        body::before { top: 10%; left: 5%; }
+        body::after { bottom: 15%; right: 5%; }
+
+        /* --- Intro Screen --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #200f21 0%, #0d040e 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s ease;
+        }
+
+        .gift-box {
+            font-size: 90px;
+            animation: elegantBounce 2s infinite ease-in-out;
+            user-select: none;
+            filter: drop-shadow(0 0 20px rgba(223, 177, 91, 0.6));
+        }
+
+        .intro-text {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--romantic-gold);
+            letter-spacing: 4px;
+            animation: pulseGlow 2s infinite;
+        }
+
+        /* --- Main Content Layout --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            transition: all 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            font-style: italic;
+            text-shadow: 0 0 15px rgba(255,255,255,0.2), 2px 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 12px;
+        }
+
+        h1 span {
+            color: var(--romantic-gold);
+            font-style: normal;
+            display: inline-block;
+            text-shadow: 0 0 20px rgba(223, 177, 91, 0.4);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--rose-gold);
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        /* --- Premium Photo Frame Execution --- */
+        .photo-window {
+            width: 100%;
+            max-width: 440px;
+            height: 480px;
+            margin: 0 auto 50px auto;
+            border-radius: 4px;
+            background: #ffffff;
+            padding: 18px 18px 60px 18px; /* Classic Polaroid Look */
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 40px rgba(223, 177, 91, 0.15);
+            position: relative;
+            overflow: hidden;
+            transform: rotate(-1.5deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-window:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .slideshow-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #151515;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Elegant Ribbon/Tape on Top */
+        .photo-window::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(1deg);
+            width: 130px;
+            height: 35px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        /* --- Premium Message Section --- */
+        .message-card {
+            background: rgba(26, 15, 26, 0.75);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(225, 152, 155, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 7, 22, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.8s ease;
+            z-index: 5;
+        }
+
+        .reveal-btn {
+            background: linear-gradient(45deg, #b88728, var(--romantic-gold));
+            color: #120716;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 25px rgba(223, 177, 91, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .reveal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(223, 177, 91, 0.6);
+        }
+
+        .secret-message {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #f1e6f2;
+            text-align: left;
+            font-weight: 300;
+        }
+
+        .secret-message p strong {
+            color: var(--romantic-gold);
+        }
+
+        /* --- Romantic Floating Hearts & Stars --- */
+        .floating-element {
+            position: fixed;
+            bottom: -50px;
+            z-index: -1;
+            opacity: 0;
+            user-select: none;
+            pointer-events: none;
+            animation: floatUpward 10s linear infinite;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes elegantBounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-12px) scale(1.03); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes floatUpward {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-115vh) translateX(60px) rotate(25deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Romantic Surprise Overlay -->
+    <div id="intro-overlay" onclick="unwrapWebsite()">
+        <div class="gift-box">🎁</div>
+        <div class="intro-text">TAP TO UNWRAP THE MAGIC</div>
+    </div>
+
+    <!-- Main Content Arena -->
+    <div class="container" id="main-content">
+        <h1>Happy Birthday, <span>Mehnaz!</span> ✨</h1>
+        <p class="subtitle">To the one who brings the most beautiful light into my universe.</p>
+
+        <!-- Executed Polaroid Slideshow (Using Your Two Photos) -->
+        <div class="photo-window">
+            <div class="slideshow-container">
+                <!-- IMPORTANT: Download your photos, place them in this folder, and name them as below -->
+                <img class="slide active" src="mehnaz1.jpg" alt="Mehnaz Celebration 1">
+                <img class="slide" src="mehnaz2.jpg" alt="Mehnaz Celebration 2">
+            </div>
+        </div>
+
+        <!-- Heartwarming Message Layer -->
+        <div class="message-card">
+            <div class="blur-overlay" id="blur-gate">
+                <button class="reveal-btn" onclick="revealMessage()">REVEAL MY MESSAGE 💌</button>
+            </div>
+            <div class="secret-message">
+                <p>Dearest Mehnaz,</p><br>
+                <p>Happy Birthday to the most incredible person and the best friend anyone could ever ask for! I built this little corner of the internet just for you, to remind you of how absolutely special you are.</p><br>
+                <p>There are friends, and then there is family that we choose—that’s exactly what you are to me. Your laughter is my favorite sound, your kindness is unmatched, and your presence makes even the darkest days feel bright. Thank you for always listening, never judging, and standing by my side through everything life throws our way.</p><br>
+                <p>Today is all about celebrating you—the beautiful soul you are, inside and out. I hope this new year brings you boundless joy, endless laughter, and the fulfillment of every single dream you hold close to your heart. No matter where life takes us, remember that you will always have a permanent place in mine.</p><br>
+                <p><strong>Forever & Always, Your Bestie ❤️</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Transition Overlay Out ---
+        function unwrapWebsite() {
+            const overlay = document.getElementById('intro-overlay');
+            const content = document.getElementById('main-content');
+            
+            overlay.style.opacity = '0';
+            overlay.style.transform = 'scale(1.05)';
+            
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                content.classList.add('visible');
+                // Start generating soft floating romantic particles
+                setInterval(createRomanticElement, 600);
+            }, 1200);
+        }
+
+        // --- Photo Execution (Seamless Crossfade Transition) ---
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function nextSlide() {
+            if (slides.length < 2) return; // Prevent breakdown if only 1 image exists
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            slides[currentSlideIndex].classList.add('active');
+        }
+        // Transitions every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // --- Reveal Message Lock ---
+        function revealMessage() {
+            const gate = document.getElementById('blur-gate');
+            gate.style.opacity = '0';
+            setTimeout(() => {
+                gate.style.display = 'none';
+            }, 800);
+        }
+
+        // --- Generative Romantic Elements (Hearts & Stars) ---
+        const romanticPool = ['❤️', '✨', '🌸', '💖', '✨'];
+        function createRomanticElement() {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            // Pick a random heart/star symbol
+            element.innerText = romanticPool[Math.floor(Math.random() * romanticPool.length)];
+            
+            // Randomize position and layout
+            element.style.left = Math.random() * 100 + 'vw';
+            const size = 15 + Math.random() * 20;
+            element.style.fontSize = size + 'px';
+            
+            // Blend opacity based on size for a depth effect
+            element.style.opacity = 0.3 + Math.random() * 0.4;
+            element.style.animationDuration = 7 + Math.random() * 6 + 's';
+            
+            document.body.appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, 13000);
+        }
+    </script>
+</body>
+</html>
